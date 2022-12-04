@@ -78,17 +78,16 @@
                     $('#showData').html(res.showData); 
                     $.toast({
                         heading: 'SUCCESS',
-                        text: res.message,
+                        text: res.title,
                         showHideTransition: 'slide',
                         icon: 'success',
                         loaderBg: '#f96868',
                         position: 'top-right'
                     });     
+                    $('[data-repeater-item]').slice(1).remove();
                 }  
             }); 
         });
-
-       
   
     </script>
 @endpush

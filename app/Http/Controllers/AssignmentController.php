@@ -12,28 +12,6 @@ class AssignmentController extends Controller
         $records = Assignment::all();
         return view('website.assignment.index',compact('records'));
     }
-    public function assignmentNew(Request $request){
-        $blogs = BlogPost::orderBy('order','ASC')->get();
-        return view('website.assignment.new-assignment',compact('blogs'));
-    }
-    public function updateOrder(Request $request)
-    {
-      
-        $blogs = BlogPost::all();
-
-        foreach ($blogs as $blog) {
-            $blog->timestamps = true; // To disable update_at field updation
-            $id = $blog->id;
-
-            foreach ($request->order as $order) {
-                if ($order['id'] == $id) {
-                    $blog->update(['order' => $order['position']]);
-                }
-            }
-        }
-        
-        return response('Update Successfully.', 200);
-    }
     public function assignmentStore(Request $request){
         
         foreach($request['data'] as $item){
@@ -52,7 +30,5 @@ class AssignmentController extends Controller
                     ]
                 );
             }
-           
-            // return back();
     }
 }
